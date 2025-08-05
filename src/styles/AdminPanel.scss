@@ -1,0 +1,216 @@
+/* AdminPanel.css */
+.admin-panel {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.admin-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1a202c;
+  margin-bottom: 20px;
+}
+
+.admin-subtitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 16px;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.admin-input,
+.admin-textarea,
+.admin-select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #a0aec0;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.admin-textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.file-input {
+  padding: 8px;
+  border: 1px solid #a0aec0;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.admin-button {
+  padding: 8px 16px;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-category {
+  background-color: #48bb78;
+}
+
+.add-category:hover {
+  background-color: #38a169;
+}
+
+.submit {
+  background-color: #3182ce;
+}
+
+.submit:hover {
+  background-color: #2b6cb0;
+}
+
+.cancel {
+  background-color: #e53e3e;
+  margin-left: 8px;
+}
+
+.cancel:hover {
+  background-color: #c53030;
+}
+
+.edit {
+  background-color: #ecc94b;
+  margin-right: 8px;
+}
+
+.edit:hover {
+  background-color: #d69e2e;
+}
+
+.delete {
+  background-color: #e53e3e;
+}
+
+.delete:hover {
+  background-color: #c53030;
+}
+
+.admin-product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-product-item {
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  background-color: #f7fafc;
+}
+
+.admin-product-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a202c;
+}
+
+.admin-product-price {
+  color: #4a5568;
+  margin-bottom: 8px;
+}
+
+.admin-product-image {
+  max-width: 100px;
+  margin-bottom: 8px;
+}
+
+.admin-product-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Адаптивные стили */
+@media (max-width: 640px) {
+  .admin-panel {
+    max-width: 100%;
+    padding: 10px;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .admin-title {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .admin-subtitle {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .admin-input,
+  .admin-textarea,
+  .admin-select {
+    font-size: 14px;
+    padding: 6px;
+  }
+
+  .admin-textarea {
+    height: 80px;
+  }
+
+  .admin-button {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  .admin-product-title {
+    font-size: 16px;
+  }
+
+  .admin-product-image {
+    max-width: 80px;
+  }
+
+  .admin-product-actions {
+    flex-direction: column;
+  }
+
+  .edit,
+  .cancel {
+    margin: 0 0 8px 0;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .admin-panel {
+    max-width: 600px;
+    padding: 15px;
+  }
+
+  .admin-title {
+    font-size: 22px;
+  }
+
+  .admin-subtitle {
+    font-size: 18px;
+  }
+
+  .admin-input,
+  .admin-textarea,
+  .admin-select {
+    font-size: 15px;
+    padding: 7px;
+  }
+
+  .admin-product-image {
+    max-width: 90px;
+  }
+}

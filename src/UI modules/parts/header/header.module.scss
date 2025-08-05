@@ -1,0 +1,244 @@
+.header {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    background: #030045;
+    padding: 20px 0;
+    position: fixed;
+}
+
+.header.transparent {
+    background: transparent;
+}
+
+.headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 124px;
+}
+
+.headerLogo {
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.headerNavigation {
+    display: flex;
+    gap: 25px;
+
+    li {
+        list-style-type: none;
+        -webkit-tap-highlight-color: transparent;
+
+    }
+}
+
+.headerNavigationLink {
+    font-size: 18px;
+    line-height: 110%;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        color: rgb(174, 174, 174);
+    }
+}
+
+.hamburgerMenu {
+    display: none;
+}
+
+.burgerCheckbox {
+    position: absolute;
+    visibility: hidden;
+}
+
+.burger {
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    display: block;
+    border: none;
+    background: transparent;
+    width: 24px;
+    height: 18px;
+    right: -30px;
+    -webkit-tap-highlight-color: transparent;
+
+    &::before,
+    &::after {
+        content: '';
+        left: 0;
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 2px;
+        border-radius: 10px;
+        background: #FFF;
+    }
+
+    &::before {
+        top: 0;
+        box-shadow: 0 8px 0 #FFF;
+        transition: box-shadow 0.3s 0.15s, top 0.3s 0.15s, transform 0.3s;
+    }
+
+    &::after {
+        bottom: 0;
+        transition: bottom 0.3s 0.15s, transform 0.3s;
+    }
+}
+
+.burgerCheckbox:checked+.burger {
+    &::before {
+        top: 8px;
+        transform: rotate(45deg);
+        box-shadow: 0 4px 0 rgba(0, 0, 0, 0);
+        transition: box-shadow 0.15s, top 0.3s, transform 0.3s 0.15s;
+    }
+
+    &::after {
+        bottom: 8px;
+        transform: rotate(-45deg);
+        transition: bottom 0.3s, transform 0.3s 0.15s;
+    }
+}
+
+.menuList {
+    top: 0px;
+    right: 0;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0;
+    margin: 0;
+    gap: 10px;
+    background: #030045;
+    list-style-type: none;
+    transform: translateX(100%);
+    transition: 0.3s;
+    width: 250px;
+    height: 100%;
+
+    .menuItem {
+        display: block;
+        padding: 20px 8px;
+        color: white;
+        font-size: 18px;
+        text-align: center;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        -webkit-tap-highlight-color: transparent;
+
+        &:hover {
+            background: rgba(255, 255, 255, .2);
+        }
+    }
+}
+
+.burgerCheckbox:checked~.menuList {
+    transform: translateX(0);
+}
+
+@media (max-width: 1300px) {
+    .headerContainer {
+        padding: 0 100px;
+    }
+
+    .headerNavigation {
+        gap: 15px;
+
+        li a {
+            font-size: 16px;
+        }
+    }
+}
+
+@media (max-width: 1100px) {
+    .headerContainer {
+        padding: 0 80px;
+    }
+
+    .headerNavigation {
+        gap: 15px;
+
+        li a {
+            font-size: 14px;
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .headerContainer {
+        padding: 0 60px;
+    }
+
+    .headerLogo {
+        font-size: 26px;
+    }
+
+    .headerNavigation {
+        display: none;
+    }
+
+    .hamburgerMenu {
+        display: block;
+    }
+
+    .headerButton {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .headerLogo {
+        font-size: 20px;
+    }
+
+    .menuList {
+        padding: 30px 0;
+        gap: 10px;
+
+        .menuItem {
+            padding: 15px 8px;
+            color: white;
+            font-size: 14px;
+        }
+    }
+
+}
+
+@media (max-width: 550px) {
+    .headerLogo {
+        font-size: 16px;
+    }
+
+    .headerContainer {
+        padding: 0 30px;
+    }
+
+    .burger {
+        right: 0;
+    }
+
+    .menuList {
+        padding: 40px 0;
+        gap: 15px;
+        width: 250px;
+
+        .menuItem {
+            padding: 15px 8px;
+            color: white;
+            font-size: 12px;
+        }
+    }
+}

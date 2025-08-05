@@ -1,0 +1,118 @@
+.product-detail {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        gap: 20px;
+    }
+
+    .cardTitleSecondary {
+        font-size: 30px;
+    }
+
+    .cardDescriptionSecondary {
+        p {
+            font-size: 26px;
+        }
+    }
+
+    .original-price {
+        font-size: 20px;
+        color: red;
+        text-decoration: line-through;
+    }
+
+    .product-detail_container {
+        padding: 150px 0 80px 0;
+        width: 100%;
+        height: 100%;
+        background-color: #f5f5f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+    }
+
+    .product-item {
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        border-radius: 30px;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .product-price {
+        color: #405AFF;
+        font-size: 28px;
+    }
+
+    .product-image img {
+        max-width: 500px;
+        height: auto;
+    }
+
+    .product-info {
+        flex-grow: 1;
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .product-detail {
+        .cardTitleSecondary {
+            font-size: 24px;
+        }
+
+        .cardDescriptionSecondary {
+            p {
+                font-size: 22px;
+            }
+        }
+
+        .product-item {
+            padding: 20px;
+        }
+
+        .product-detail_container {
+            padding: 120px 0 60px 0;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .product-detail {
+        .cardTitleSecondary {
+            font-size: 20px;
+        }
+
+        .cardDescriptionSecondary {
+            p {
+                font-size: 18px;
+            }
+        }
+
+        .product-item {
+            padding: 15px;
+        }
+
+        .product-detail_container {
+            padding: 100px 0 40px 0;
+        }
+    }
+}

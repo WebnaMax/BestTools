@@ -1,0 +1,117 @@
+.myButton {
+    border: none;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    transition: background-color .3s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
+
+    &--small {
+        padding: 8px 14px;
+        font-size: 18px;
+    }
+
+    &--medium {
+        padding: 10px 16px;
+        font-size: 20px;
+    }
+
+    &--large {
+        width: 200px;
+        padding: 18px 24px;
+        font-size: 22px;
+    }
+
+    &--primary {
+        background-color: #0019B9;
+        color: white;
+    }
+
+    &--secondary {
+        background-color: #c7e3ff;
+        color: #0B002D;
+    }
+
+    &--primary:hover {
+        background-color: #1534ff;
+        box-shadow: 0 0 5px #1534ff;
+    }
+
+    &--secondary:hover {
+        background-color: #a1d0ff;
+        box-shadow: 0 0 5px #a1d0ff;
+    }
+}
+
+@media (max-width: 1100px) {
+    .myButton {
+        &--small {
+            padding: 8px 12px;
+            font-size: 16px;
+        }
+
+        &--medium {
+            padding: 8px 12px;
+            font-size: 18px;
+        }
+
+        &--large {
+            width: 180px;
+            padding: 15px 20px;
+            font-size: 20px;
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .myButton {
+        &--small {
+            padding: 6px 10px;
+            font-size: 16px;
+        }
+
+        &--medium {
+            padding: 6px;
+            font-size: 14px;
+        }
+
+        &--large {
+            width: 140px;
+            padding: 10px 10px;
+            font-size: 16px;
+        }
+    }
+}
+
+@media (max-width: 756px) {
+    .myButton {
+        border-radius: 5px;
+
+        &--small {
+            padding: 6px 8px;
+            font-size: 14px;
+        }
+
+        &--large {
+            width: 110px;
+            padding: 8px 5px;
+            font-size: 14px;
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    .myButton {
+        &--small {
+            padding: 4px 6px;
+            font-size: 14px;
+        }
+
+        &--large {
+            width: 90px;
+            padding: 5px;
+            font-size: 10px;
+        }
+    }
+}

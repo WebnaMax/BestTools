@@ -1,0 +1,108 @@
+.productsSlider {
+  width: 100%;
+  min-height: 450px; 
+  padding: 20px 0;
+}
+
+.Slider {
+  width: 100%;
+    min-height: 450px; 
+ /* Минимальная высота для видимости */
+}
+
+.productsCarouselCell {
+  width: 300px;
+  height: 100%;
+  margin-right: 20px;
+  padding: 20px;
+  background: #F5F5F5; 
+  border-radius: 30px;
+  display: flex; 
+  align-items: center;
+  cursor: pointer;
+  transition: box-shadow .2s ease;
+
+  &:hover {
+      box-shadow: 0px 1px 5px rgb(149, 149, 149);
+  }
+}
+
+.ourProductsItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.ourProductsItemImage {
+  width: 100%;
+  height: 200px; /* Фиксированная высота для изображений */
+}
+
+.ourProductsItemImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Изображения не обрезаются */
+}
+
+.productItemText {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ourProductsItemControls {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.productSpecialPrice {
+  color: #405AFF;
+  font-size: 24px;
+}
+
+.productOldPrice {
+  color: #5A5A5A;
+  font-size: 16px;
+  text-decoration: line-through;
+}
+
+@media (max-width: 991px) {
+  .Slider {
+    min-height: 400px;
+  }
+
+  .productsSlider {
+    min-height: 400px;
+  }
+
+  .productSpecialPrice {
+    font-size: 24px;
+  }
+
+  .productOldPrice {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .Slider {
+    min-height: 350px;
+  }
+
+  .productsSlider {
+    min-height: 350px;
+  }
+
+  .productSpecialPrice {
+    font-size: 22px;
+  }
+
+  .productOldPrice {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,108 @@
+.aboutProducts {
+    background-color: #F5F5F5;
+    padding: 120px 0 100px 0;
+}
+
+.aboutProductsContainer {
+    width: 100%;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.aboutProductsItem {
+    padding: 30px 30px;
+    width: calc(100% / 3 - 30px);
+    min-width: 208px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: all .4s ease;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    &:hover {
+        background-color: rgb(245, 245, 245);
+        box-shadow: 0px 2px 5px rgb(149, 149, 149);
+    }
+    h3 {
+        text-decoration: none;
+    }
+}
+
+
+.aboutProductsItemButton{
+    margin-top: auto;
+}
+
+.aboutProductsItemButtonText {
+    font-size: 24px;
+    color: #405AFF;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color .3s ease;
+    &:hover {
+        color: #0b22bd;
+    }
+}
+
+@media (max-width: 1200px) {
+    .aboutProductsItem {
+        width: calc(100% / 2 - 20px);
+    }
+}
+
+@media (max-width: 991px) {
+    .aboutProducts {
+        padding: 80px 0 60px 0;
+    }
+
+    .aboutProductsTitleContainer {
+        gap: 20px;
+    }
+    .aboutProductsItemButtonText {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .aboutProductsContainer {
+        gap: 20px;
+    }
+
+    .aboutProducts {
+        padding: 40px 0 30px 0;
+    }
+
+    .aboutProductsTitleContainer {
+        margin-bottom: 40px;
+    }
+
+    .aboutProductsItem {
+        width: 100%;
+    }
+
+    .aboutProductsItemTitle {
+        h3 {
+            font-size: 18px;
+        }
+    }
+
+    .aboutProductsItemDescription {
+        p {
+            font-size: 14px;
+        }
+    }
+
+    .aboutProductsTitleContainer {
+        gap: 10px;
+    }
+
+    .aboutProductsItemButtonText {
+        font-size: 16px;
+    } 
+}

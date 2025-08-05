@@ -1,0 +1,126 @@
+.ourProducts {
+    padding: 120px 0 100px 0;
+    background-color: #F5F5F5;
+}
+
+.ourProductsContainer {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ourProductsItem {
+    padding: 30px;
+    width: calc(100% / 4 - 24px);
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: all .4s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    &:hover {
+        background-color: white;
+        box-shadow: 0px 2px 5px rgb(149, 149, 149);
+        .ourProductsItemImage {
+            img {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+.ourProductsItemLink {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ourProductsItemLink {
+    text-decoration: none;
+    color: inherit;
+}
+
+.ourProductsItemImage {
+    width: 100%;
+    max-height: 280px;
+    min-height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: auto;
+        transition: all .4s ease;
+    }
+}
+
+.ourProductsItemTitle {
+    h3 {
+        font-size: 24px;
+        font-weight: 600;
+        color: #333;
+    }
+}
+
+.ourProductsItemPrice {
+    font-size: 22px;
+    font-weight: 400;
+    color: #405AFF;
+}
+
+.ourProductsItemControls {
+    margin-top: auto;
+}
+
+@media (max-width: 1200px) {
+    .ourProductsItem {
+        padding: 20px;
+    }
+
+    .ourProductsItem {
+        width: calc(100% / 3 - 20px);
+    }
+}
+
+@media (max-width: 991px) {
+    .ourProducts {
+        padding: 80px 0 60px 0;
+    }
+
+    .ourProductsContainer {
+        gap: 20px;
+    }
+
+    .ourProductsItem {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ourProductsItem {
+        // width: calc(100% / 2 - 5px);
+        width: 100%;
+    }
+
+    .ourProductsItemImage {
+        overflow: hidden;
+
+        img {
+            max-width: 300px;
+        }
+    }
+
+    .ourProducts {
+        padding: 40px 0 30px 0;
+    }
+
+     .ourProductsContainer {
+        gap: 10px;
+    }
+}
+

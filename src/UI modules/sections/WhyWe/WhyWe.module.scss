@@ -1,0 +1,68 @@
+.whyWe {
+    padding: 120px 0 100px 0;
+}
+
+.whyWeCardsContainer {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.whyWeItem {
+    padding: 20px;
+    width: calc(100% / 3 - 20px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+}
+
+.whyWeItemIcon {
+    background-color: #EAE6FF;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 991px) {
+    .whyWeCardsContainer {
+        gap: 20px;
+    }
+
+    .whyWeItem {
+        padding: 10px;
+        gap: 15px;
+    }
+
+    .whyWeItemIcon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .whyWe {
+        padding: 80px 0 60px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .whyWeCardsContainer {
+        gap: 15px;
+    }
+
+    .whyWeItem {
+        gap: 10px;
+    }
+
+    .whyWeItem {
+        width: 100%;
+    }
+
+    .whyWe {
+        padding: 40px 0 30px 0;
+    }
+}
