@@ -5,9 +5,6 @@ import iconInsta from '../../../icons/instagram.svg';
 import iconTelegram from '../../../icons/telegram.svg';
 import iconViber from '../../../icons/viber.svg';
 import iconFacebook from '../../../icons/facebook.svg';
-import iconPhone from '../../../icons/phoneWhite.svg';
-import iconMail from '../../../icons/mailWhite.svg';
-import iconLocation from '../../../icons/locationWhite.svg';
 import { Link as LinkScroll } from 'react-scroll';
 import { Link as LinkRouter } from 'react-router';
 
@@ -106,8 +103,6 @@ function Footer(props) {
                                 <li>
                                     <LinkRouter
                                         to="/gasolineTools"
-                                        smooth={true}
-                                        duration={500}
                                         className={`cardDescriptionSecondary ${cl.footerNavLink}`}
                                     >
                                         <p>Unelte Noastre Pe Benzină</p>
@@ -116,8 +111,6 @@ function Footer(props) {
                                 <li>
                                     <LinkRouter
                                         to="/electroTools"
-                                        smooth={true}
-                                        duration={500}
                                         className={`cardDescriptionSecondary ${cl.footerNavLink}`}
                                     >
                                         <p>Unelte Noastre Pe Benzină</p>
@@ -126,8 +119,6 @@ function Footer(props) {
                                 <li>
                                     <LinkRouter
                                         to="/electroTools"
-                                        smooth={true}
-                                        duration={500}
                                         className={`cardDescriptionSecondary ${cl.footerNavLink}`}
                                     >
                                         <p>Instrumente de Măsurare</p>

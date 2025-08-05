@@ -77,7 +77,11 @@ function Header(props) {
   return (
     <header className={`${cl.header} ${isScrolled ? '' : cl.transparent}`}>
       <div className={cl.headerContainer}>
-        <div className={cl.headerLogo}>BestTools</div>
+        <div className={cl.headerLogo}>
+          <Link to='/' className={cl.headerLogo}>
+            <div className={cl.headerLogo}>BestTools</div>
+          </Link>
+        </div>
         <ul className={cl.headerNavigation}>
           <li>
             <Link

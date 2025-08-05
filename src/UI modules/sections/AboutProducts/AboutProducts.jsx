@@ -39,15 +39,8 @@ function AboutProducts(props) {
                             <div className="cardDescriptionSecondary">
                                 <p>Oferim unelte pe benzină performante și durabile, perfecte pentru grădină, construcții sau întreținere. </p>
                             </div>
-                            <div className={cl.aboutProductsItemButton}>
-                            <ScrollLink
-                                    to="products"
-                                    smooth={true}
-                                    duration={500}
-                                    className={cl.aboutProductsItemButtonText}
-                                    >
-                                    Vezi Toate →
-                                </ScrollLink>
+                            <div className={cl.aboutProductsItemButtonText}>
+                                Vezi Toate →
                             </div>
                         </NavLink>
                     {/* </div> */}
@@ -61,38 +54,10 @@ function AboutProducts(props) {
                         <div className="cardDescriptionSecondary">
                             <p>Bormașini, polizoare și multe altele de calitate profesională pentru proiecte de construcții și prelucrare a lemnului de mare amploare.</p>
                         </div>
-                        <div className={cl.aboutProductsItemButton}>
-                            <ScrollLink
-                                to="products"
-                                smooth={true}
-                                duration={500}
-                                className={cl.aboutProductsItemButtonText}
-                            >
-                                Vezi Toate →
-                            </ScrollLink>
+                        <div className={cl.aboutProductsItemButtonText}>
+                            Vezi Toate →
                         </div>
                     </NavLink>
-                    {/* <div className={cl.aboutProductsItem}>
-                        <div className="itemIconPrimary">
-                            <img src={iconTools} alt="Icon Tools" />
-                        </div>
-                        <div className="cardTitleSecondary">
-                            <h3>Unelte de Mână</h3>
-                        </div>
-                        <div className="cardDescriptionSecondary">
-                            <p>Unelte de mână de precizie, inclusiv chei, șurubelnițe, clești și unelte speciale pentru lucrări detaliate.</p>
-                        </div>
-                        <div className={cl.aboutProductsItemButton}>
-                            <Link
-                                to="products"
-                                smooth={true}
-                                duration={500}
-                                className={cl.aboutProductsItemButtonText}
-                            >
-                                Vezi Toate →
-                            </Link>
-                        </div>
-                    </div> */}
                     <NavLink to="/rulerTools" className={cl.aboutProductsItem}>
                         <div className="itemIconPrimary">
                             <img src={iconRuler} alt="Icon Ruler" />
@@ -103,15 +68,8 @@ function AboutProducts(props) {
                         <div className="cardDescriptionSecondary">
                             <p>Instrumente de măsurare precise, inclusiv nivele, rulete, șublere și instrumente de măsurare cu laser.</p>
                         </div>
-                        <div className={cl.aboutProductsItemButton}>
-                            <ScrollLink
-                                to="products"
-                                smooth={true}
-                                duration={500}
-                                className={cl.aboutProductsItemButtonText}
-                            >
-                                Vezi Toate →
-                            </ScrollLink>
+                        <div className={cl.aboutProductsItemButtonText}>
+                            Vezi Toate →
                         </div>
                     </NavLink>
                 </div>

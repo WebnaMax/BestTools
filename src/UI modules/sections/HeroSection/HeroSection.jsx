@@ -7,8 +7,6 @@ import Header from '../../parts/header/header';
 import { Link } from 'react-scroll';
 
 function HeroSection() {
-
-
     return (
         <div className={cl.heroSection} id='home'>
             <Header />
@@ -22,20 +20,14 @@ function HeroSection() {
                     </div>
                     <div className={cl.heroSectionDescription}>
                         <p>
-                            Descoperă colecția noastră completă de instrumente de înaltă calitate, 
-                            concepute pentru profesioniști și pasionații de bricolaj. De la unelte electrice 
+                            Descoperă colecția noastră completă de instrumente de înaltă calitate,
+                            concepute pentru profesioniști și pasionații de bricolaj. De la unelte electrice
                             la instrumente de precizie, avem tot ce îți trebuie pentru a duce treaba la bun sfârșit
                         </p>
                     </div>
                     <div className={cl.heroSectionButtonsContainer}>
                         <MyButton size="large" color="primary">Cumpără Acum</MyButton>
-                        <Link
-                            to="contacts"
-                            smooth={true}
-                            duration={500}
-                        >
-                            <MyButton size="large" color="secondary">Află Mai Multe</MyButton>
-                        </Link>
+                        <MyButton size="large" color="secondary">Află Mai Multe</MyButton>
                     </div>
                 </div>
             </div>

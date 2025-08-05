@@ -35,10 +35,10 @@ function GasolineTools(props) {
                 </div>
                 <div className='toolsCategoriesContainer'>
                     {subcategories.map((subcategory, index) => (
-                        <div className='toolsCategoriesProduct'>
+                        <div className='toolsCategoriesProduct' key={index}>
                             <Link to={subcategory.link} className='toolsCategoriesProductItem'>
                                 <div className='toolsCategoriesProductImage'>
-                                    <img src={subcategory.image} />
+                                    <img src={subcategory.image} alt={subcategory.name}/>
                                 </div>
                                 <div className='cardTitleSecondary'>
                                     <h3>{subcategory.name}</h3>

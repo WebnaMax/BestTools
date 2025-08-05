@@ -1,40 +1,27 @@
 import React from 'react';
-import cl from './MyButton.module.scss'; 
+import cl from './MyButton.module.scss';
 import { Link } from 'react-scroll';
 
 function MyButton({ children, size = 'large', color = 'primary', ...props }) {
-
-    const getSection = () => {
-    switch (color) {
-      case 'primary':
-        return 'products'; // Секция для синей кнопки
-      case 'secondary':
-        return 'about'; // Секция для белой кнопки
-      default:
-        return 'products'; // Значение по умолчанию
+    const getScrollTarget = () => {
+        switch (color) {
+            case 'primary':
+                return 'products';   // Пример: Cumpără Acum
+            case 'secondary':
+                return 'about';   // Пример: Află Mai Multe
+            default:
+                return 'home';
+        }
     };
-    // switch (size) {
-    //     case 'large';
-    //         return 'products';
-    //     case 'medium'
-    //         return 'products'
-    //     case 'small'
-    //         return ''
-    // };
-  };
+
+    const className = `${cl.myButton} ${cl[`myButton--${size}`]} ${cl[`myButton--${color}`]}`;
 
     return (
-        <div>
-            <Link
-                to={getSection()}
-                smooth={true}
-                duration={500}
-            >
-                <button className={`${cl.myButton} ${cl[`myButton--${size}`]} ${cl[`myButton--${color}`]}`} {...props}>
-                    {children}
-                </button>
-            </Link>
-        </div>
+        <Link to={getScrollTarget()} smooth={true} duration={500}>
+            <button className={className} {...props}>
+                {children}
+            </button>
+        </Link>
     );
 }
 

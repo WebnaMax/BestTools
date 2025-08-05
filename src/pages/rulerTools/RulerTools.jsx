@@ -26,7 +26,7 @@ function RulerTools(props) {
                     <div className='toolsCategoriesProduct' style={{ width: '40%' }}>
                         <Link to='/rulerTools/Measuring' className='toolsCategoriesProductItem'>
                             <div className='toolsCategoriesProductImage'>
-                                <img src={productLaserRuler} />
+                                <img src={productLaserRuler} alt="Nivelă cu laser"/>
                             </div>
                             <div className='cardTitleSecondary'>
                                 <h3>Nivelă cu laser</h3>

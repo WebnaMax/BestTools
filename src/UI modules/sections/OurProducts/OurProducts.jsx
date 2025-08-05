@@ -40,7 +40,7 @@ function OurProducts(props) {
                 </div>
                 <div className={cl.ourProductsContainer}>
                     {categories.map((category, index) => (
-                        <div className={cl.ourProductsItem}>
+                        <div className={cl.ourProductsItem} key={index}>
                             <Link to={category.link} className={cl.ourProductsItemLink}>
                                 <div className={cl.ourProductsItemImage}>
                                     <img src={category.image} alt="Product `${category.name}`" />
@@ -54,97 +54,6 @@ function OurProducts(props) {
                             </Link>
                         </div>
                     ))}
-                    {/* <div className={cl.ourProductsItem}>
-                        <Link to='/gasolineTools/BrushCutters'>
-                            <div className={cl.ourProductsItemImage}>
-                                <img src={productMotocoase} alt="Product Motocoase" />
-                            </div>
-                            <div className="cardTitleSecondary">
-                                <h3 style={{ textAlign: "center" }}>Motocoase</h3>
-                            </div>
-                            <div className="cardDescriptionSecondary">
-                                <p style={{ textAlign: "center" }}>Include motocoase performante. Perfecte pentru lucrări de grădinărit și întreținerea terenurilor.</p>
-                            </div>
-                        </Link>
-                    </div>
-                    <div className={cl.ourProductsItem}>
-                        <Link to='/gasolineTools/Generators'>
-                            <div className={cl.ourProductsItemImage}>
-                                <img src={productGeneratoare} alt="Product Generatoare" />
-                            </div>
-                            <div className="cardTitleSecondary">
-                                <h3 style={{ textAlign: "center" }}>Generatoare</h3>
-                            </div>
-                            <div className="cardDescriptionSecondary">
-                                <p style={{ textAlign: "center" }}>Include generatoare. Potrivite pentru șantiere și zone fără acces la rețea.</p>
-                            </div>
-                        </Link>
-                    </div>
-                    <div className={cl.ourProductsItem}>
-                        <Link to='/electroTools/CuttingTools'>
-                            <div className={cl.ourProductsItemImage}>
-                                <img src={productTaiere} alt="Product Taiere" />
-                            </div>
-                            <div className="cardTitleSecondary">
-                                <h3 style={{ textAlign: "center" }}>Unelte pentru tăiere și debitare</h3>
-                            </div>
-                            <div className="cardDescriptionSecondary">
-                                <p style={{ textAlign: "center" }}>Include unelte. Utilizate pentru tăiere și prelucrarea materialelor în ateliere și pe șantier.</p>
-                            </div>
-                        </Link>
-                    </div>
-                    <div className={cl.ourProductsItem}>
-                        <Link to='/electroTools/DrillingAndFastening'>
-                            <div className={cl.ourProductsItemImage}>
-                                <img src={productGaurie} alt="Product Gaurie" />
-                            </div>
-                            <div className="cardTitleSecondary">
-                                <h3 style={{ textAlign: "center" }}>Unelte pentru găurire și înșurubare</h3>
-                            </div>
-                            <div className="cardDescriptionSecondary">
-                                <p style={{ textAlign: "center" }}>Include unelte. Ideal pentru găurire precisă și înșurubare în proiecte casnice și industriale.</p>
-                            </div>
-                        </Link>
-                    </div>
-                    <div className={cl.ourProductsItem}>
-                        <Link to='/electroTools/GrindingAndPolishing'>
-                            <div className={cl.ourProductsItemImage}>
-                                <img src={productSlefuire} alt="Product Slefuire" />
-                            </div>
-                            <div className="cardTitleSecondary">
-                                <h3 style={{ textAlign: "center" }}>Pentru șlefuire și lustruire</h3>
-                            </div>
-                            <div className="cardDescriptionSecondary">
-                                <p style={{ textAlign: "center" }}>Include unelte. Perfecte pentru șlefuire și lustruire în renovări și decor.</p>
-                            </div>
-                        </Link>
-                    </div>
-                    <div className={cl.ourProductsItem}>
-                        <Link to='/electroTools/WoodWorking'>
-                            <div className={cl.ourProductsItemImage}>
-                                <img src={productFrezers} alt="Product Frezers" />
-                            </div>
-                            <div className="cardTitleSecondary">
-                                <h3 style={{ textAlign: "center" }}>Unelte pentru prelucrarea lemnului și a altor materiale</h3>
-                            </div>
-                            <div className="cardDescriptionSecondary">
-                                <p style={{ textAlign: "center" }}>Include unelte. Potrivite pentru lucrări de tâmplărie și prelucrarea diverselor materiale.</p>
-                            </div>
-                        </Link>
-                    </div>
-                    <div className={cl.ourProductsItem}>
-                        <Link to='/electroTools/ConstructionAndFinishing'>
-                            <div className={cl.ourProductsItemImage} style={{maxHeight: '200px'}}>
-                                <img src={productStroitlmie} alt="Product Constructie" />
-                            </div>
-                            <div className="cardTitleSecondary">
-                                <h3 style={{ textAlign: "center" }}>Unelte pentru lucrări de construcții și finisaje</h3>
-                            </div>
-                            <div className="cardDescriptionSecondary">
-                                <p style={{ textAlign: "center" }}>Include unelte. Utilizate pentru construcții și finisaje interioare.</p>
-                            </div>
-                        </Link>
-                    </div> */}
                 </div>
             </div>
         </div>

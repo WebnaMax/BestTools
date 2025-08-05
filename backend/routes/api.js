@@ -5,6 +5,8 @@ const Product = require('../models/Product');
 const multer = require('multer');
 const path = require('path');
 
+const API_URL = 'https://f2eec49e40dc5b.lhr.life/api';
+
 // Настройка multer для сохранения файлов
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {

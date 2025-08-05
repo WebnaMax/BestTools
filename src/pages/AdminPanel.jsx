@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ImageSlider from './ImageSlider';
 import '../styles/AdminPanel.scss';
+import HeaderCatalog from "../UI modules/parts/headerCatalog/HeaderCatalog";
 
 function AdminPanel() {
   const [products, setProducts] = useState([]);
@@ -18,35 +19,54 @@ function AdminPanel() {
   });
   const [editingId, setEditingId] = useState(null);
   const [error, setError] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+
+  // Hardcoded password for simplicity; replace with API call or secure storage in production
+  const ADMIN_PASSWORD = 'admin123'; // Replace with secure method (e.g., API validation)
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/categories', { credentials: 'include' })
-      .then(res => {
-        if (!res.ok) throw new Error('Network response was not ok');
-        return res.json();
-      })
-      .then(data => {
-        if (Array.isArray(data)) setCategories(data);
-        else setCategories([]);
-      })
-      .catch(err => {
-        console.error('Error fetching categories:', err);
-        setCategories([]);
-      });
-    fetch('http://localhost:5000/api/products', { credentials: 'include' })
-      .then(res => {
-        if (!res.ok) throw new Error('Network response was not ok');
-        return res.json();
-      })
-      .then(data => {
-        if (Array.isArray(data)) setProducts(data);
-        else setProducts([]);
-      })
-      .catch(err => {
-        console.error('Error fetching products:', err);
-        setError('Error fetching products: ' + err.message);
-      });
-  }, []);
+    if (isAuthenticated) {
+      fetch('http://localhost:5000/api/categories', { credentials: 'include' })
+          .then(res => {
+            if (!res.ok) throw new Error('Network response was not ok');
+            return res.json();
+          })
+          .then(data => {
+            if (Array.isArray(data)) setCategories(data);
+            else setCategories([]);
+          })
+          .catch(err => {
+            console.error('Error fetching categories:', err);
+            setCategories([]);
+          });
+      fetch('http://localhost:5000/api/products', { credentials: 'include' })
+          .then(res => {
+            if (!res.ok) throw new Error('Network response was not ok');
+            return res.json();
+          })
+          .then(data => {
+            if (Array.isArray(data)) setProducts(data);
+            else setProducts([]);
+          })
+          .catch(err => {
+            console.error('Error fetching products:', err);
+            setError('Error fetching products: ' + err.message);
+          });
+    }
+  }, [isAuthenticated]);
+
+  const handlePasswordSubmit = (e) => {
+    e.preventDefault();
+    // Replace this with an API call to validate the password in a real application
+    if (password === ADMIN_PASSWORD) {
+      setIsAuthenticated(true);
+      setPasswordError('');
+    } else {
+      setPasswordError('Incorrect password. Please try again.');
+    }
+  };
 
   const handleChange = (e, index) => {
     if (e.target.name === 'images') {
@@ -79,14 +99,14 @@ function AdminPanel() {
     }
 
     try {
-      console.log('Sending data:', Object.fromEntries(formDataToSend)); // Отладка
+      console.log('Sending data:', Object.fromEntries(formDataToSend));
       const res = await fetch(url, {
         method,
         body: formDataToSend,
         credentials: 'include'
       });
       const data = await res.json();
-      console.log('Server response:', data); // Отладка ответа
+      console.log('Server response:', data);
       if (res.ok) {
         if (editingId) {
           setProducts(products.map(p => (p._id === editingId ? data : p)));
@@ -158,138 +178,167 @@ function AdminPanel() {
     }
   };
 
-  return (
-    <div className="admin-panel">
-      <h2 className="admin-title">Admin Panel</h2>
-      <button onClick={handleAddCategory} className="admin-button add-category">Add Category</button>
-      <h3 className="admin-subtitle">{editingId ? 'Edit Product' : 'Add Product'}</h3>
-      {error && <p className="admin-error">{error}</p>}
-      <form onSubmit={handleSubmit} className="admin-form">
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Name"
-          required
-          className="admin-input"
-        />
-        <textarea
-          name="shortDescription"
-          value={formData.shortDescription}
-          onChange={handleChange}
-          placeholder="Short Description (for product card)"
-          className="admin-textarea"
-        />
-        <textarea
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-          placeholder="Full Description (for product page)"
-          className="admin-textarea"
-        />
-        <input
-          type="number"
-          name="price"
-          value={formData.price}
-          onChange={handleChange}
-          placeholder="Price"
-          required
-          className="admin-input"
-          step="0.01"
-        />
-        <input
-          type="number"
-          name="originalPrice"
-          value={formData.originalPrice}
-          onChange={handleChange}
-          placeholder="Original Price"
-          className="admin-input"
-          step="0.01"
-        />
-        <input
-          type="number"
-          name="discount"
-          value={formData.discount}
-          onChange={handleChange}
-          placeholder="Discount (%)"
-          className="admin-input"
-          min="0"
-          max="100"
-        />
-        {formData.existingImages.length > 0 && (
-          <div className="existing-images">
-            <h4>Current Images:</h4>
-            <ImageSlider images={formData.existingImages.map(img => img.replace('/public', ''))} productName={formData.name} />
-          </div>
-        )}
-        {[0, 1, 2, 3].map(index => (
-          <input
-            key={index}
-            type="file"
-            name="images"
-            accept="image/*"
-            onChange={(e) => handleChange(e, index)}
-            className="admin-input file-input"
-          />
-        ))}
-        <select
-          name="category"
-          value={formData.category}
-          onChange={handleChange}
-          required
-          className="admin-select"
-        >
-          <option value="">Select Category</option>
-          {categories?.length > 0 &&
-            categories.map(category => (
-              <option key={category._id} value={category._id}>
-                {category.parentCategory
-                  ? `${category.name} (under ${category.parentCategory.name || category.parentCategory})`
-                  : category.name}
-              </option>
-            ))}
-        </select>
-        <button type="submit" className="admin-button submit">
-          {editingId ? 'Update' : 'Add'}
-        </button>
-        {editingId && (
-          <button type="button" onClick={() => setEditingId(null)} className="admin-button cancel">
-            Cancel
-          </button>
-        )}
-      </form>
-      <h3 className="admin-subtitle">Product List</h3>
-      <div className="admin-product-list">
-        {products.map(product => (
-          <div key={product._id} className="admin-product-item">
-            <h4 className="admin-product-title">
-              {product.name} ({product.category.name})
-            </h4>
-            <p className="admin-product-price">
-              Price: {product.price} lei{' '}
-              {product.discount > 0 && `(Discount: ${product.discount}%)`}
-            </p>
-            <p className="admin-product-short-desc">{product.shortDescription || 'No short description'}</p>
-            <ImageSlider
-              images={product.images.map(img => {
-                console.log('Image path:', img, 'Transformed:', img.replace('/public', ''));
-                return img.replace('/public', '');
-              })}
-              productName={product.name}
-            />
-            <div className="admin-product-actions">
-              <button onClick={() => handleEdit(product)} className="admin-button edit">
-                Edit
-              </button>
-              <button onClick={() => handleDelete(product._id)} className="admin-button delete">
-                Delete
-              </button>
+  if (!isAuthenticated) {
+    return (
+        <div className="admin-panel">
+          <div className="password-modal">
+            <div className="password-modal-content">
+              <h2>Admin Access</h2>
+              <form onSubmit={handlePasswordSubmit}>
+                <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Enter password"
+                    className="admin-input"
+                    required
+                />
+                {passwordError && <p className="admin-error">{passwordError}</p>}
+                <button type="submit" className="admin-button submit">Submit</button>
+              </form>
             </div>
           </div>
-        ))}
+        </div>
+    );
+  }
+
+  return (
+      <div className="admin-panel">
+        <HeaderCatalog />
+        <div className="container">
+          <div className="admin-panel_container">
+            <h2 className="admin-title">Admin Panel</h2>
+            <button onClick={handleAddCategory} className="admin-button add-category">Add Category</button>
+            <h3 className="admin-subtitle">{editingId ? 'Edit Product' : 'Add Product'}</h3>
+            {error && <p className="admin-error">{error}</p>}
+            <form onSubmit={handleSubmit} className="admin-form">
+              <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Name"
+                  required
+                  className="admin-input"
+              />
+              <textarea
+                  name="shortDescription"
+                  value={formData.shortDescription}
+                  onChange={handleChange}
+                  placeholder="Short Description (for product card)"
+                  className="admin-textarea"
+              />
+              <textarea
+                  name="description"
+                  value={formData.description}
+                  onChange={handleChange}
+                  placeholder="Full Description (for product page)"
+                  className="admin-textarea"
+              />
+              <input
+                  type="number"
+                  name="price"
+                  value={formData.price}
+                  onChange={handleChange}
+                  placeholder="Price"
+                  required
+                  className="admin-input"
+                  step="0.01"
+              />
+              <input
+                  type="number"
+                  name="originalPrice"
+                  value={formData.originalPrice}
+                  onChange={handleChange}
+                  placeholder="Original Price"
+                  className="admin-input"
+                  step="0.01"
+              />
+              <input
+                  type="number"
+                  name="discount"
+                  value={formData.discount}
+                  onChange={handleChange}
+                  placeholder="Discount (%)"
+                  className="admin-input"
+                  min="0"
+                  max="100"
+              />
+              {formData.existingImages.length > 0 && (
+                  <div className="existing-images">
+                    <h4>Current Images:</h4>
+                    <ImageSlider images={formData.existingImages.map(img => img.replace('/public', ''))} productName={formData.name} />
+                  </div>
+              )}
+              {[0, 1, 2, 3].map(index => (
+                  <input
+                      key={index}
+                      type="file"
+                      name="images"
+                      accept="image/*"
+                      onChange={(e) => handleChange(e, index)}
+                      className="admin-input file-input"
+                  />
+              ))}
+              <select
+                  name="category"
+                  value={formData.category}
+                  onChange={handleChange}
+                  required
+                  className="admin-select"
+              >
+                <option value="">Select Category</option>
+                {categories?.length > 0 &&
+                    categories.map(category => (
+                        <option key={category._id} value={category._id}>
+                          {category.parentCategory
+                              ? `${category.name} (under ${category.parentCategory.name || category.parentCategory})`
+                              : category.name}
+                        </option>
+                    ))}
+              </select>
+              <button type="submit" className="admin-button submit">
+                {editingId ? 'Update' : 'Add'}
+              </button>
+              {editingId && (
+                  <button type="button" onClick={() => setEditingId(null)} className="admin-button cancel">
+                    Cancel
+                  </button>
+              )}
+            </form>
+            <h3 className="admin-subtitle">Product List</h3>
+            <div className="admin-product-list">
+              {products.map(product => (
+                  <div key={product._id} className="admin-product-item">
+                    <h4 className="admin-product-title">
+                      {product.name} ({product.category.name})
+                    </h4>
+                    <p className="admin-product-price">
+                      Price: {product.price} lei{' '}
+                      {product.discount > 0 && `(Discount: ${product.discount}%)`}
+                    </p>
+                    <p className="admin-product-short-desc">{product.shortDescription || 'No short description'}</p>
+                    <ImageSlider
+                        images={product.images.map(img => {
+                          console.log('Image path:', img, 'Transformed:', img.replace('/public', ''));
+                          return img.replace('/public', '');
+                        })}
+                        productName={product.name}
+                    />
+                    <div className="admin-product-actions">
+                      <button onClick={() => handleEdit(product)} className="admin-button edit">
+                        Edit
+                      </button>
+                      <button onClick={() => handleDelete(product._id)} className="admin-button delete">
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
   );
 }
 
